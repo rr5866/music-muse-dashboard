@@ -2,6 +2,7 @@ import { Play } from "lucide-react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useRef } from "react";
+import { useNowPlaying } from "../context/NowPlayingContext";
 
 const recommended = [
   { title: "After Hours", artist: "The Weeknd", img: "https://images.unsplash.com/photo-1571330735066-03aaa9429d89?w=300&h=300&fit=crop" },
@@ -16,6 +17,7 @@ const recommended = [
 
 export function RecommendedSection() {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const { setSelectedTrack } = useNowPlaying();
 
   const scroll = (dir: "left" | "right") => {
     if (scrollRef.current) {
@@ -51,6 +53,7 @@ export function RecommendedSection() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: i * 0.04, duration: 0.3 }}
             className="group flex-shrink-0 w-[160px] lg:w-[180px] bg-card rounded-lg p-3 card-hover cursor-pointer"
+            onClick={() => setSelectedTrack(item)}
           >
             <div className="relative aspect-square rounded-md overflow-hidden mb-3">
               <img src={item.img} alt={item.title} className="h-full w-full object-cover" />
