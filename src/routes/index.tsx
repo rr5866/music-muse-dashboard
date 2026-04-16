@@ -1,26 +1,36 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { MusicSidebar } from "../components/MusicSidebar";
+import { PlayerBar } from "../components/PlayerBar";
+import { MobileTabBar } from "../components/MobileTabBar";
+import { HeroHeader } from "../components/HeroHeader";
+import { RecentlyPlayed } from "../components/RecentlyPlayed";
+import { RecommendedSection } from "../components/RecommendedSection";
 
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Wavify — Your Music, Your Way" },
+      { name: "description", content: "A modern music streaming dashboard with curated playlists and personalized recommendations." },
+      { property: "og:title", content: "Wavify — Your Music, Your Way" },
+      { property: "og:description", content: "Stream your favorite music with a beautiful, modern interface." },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. For sites with multiple pages (About, Services, Contact, etc.),
-// create separate route files (about.tsx, services.tsx, contact.tsx) — don't put all pages in this file.
-function PlaceholderIndex() {
+function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="flex min-h-screen bg-background">
+      <MusicSidebar />
+      <main className="flex-1 overflow-y-auto pb-36 lg:pb-28">
+        <div className="px-4 lg:px-8 py-4 lg:py-6 space-y-8">
+          <HeroHeader />
+          <RecentlyPlayed />
+          <RecommendedSection />
+        </div>
+      </main>
+      <PlayerBar />
+      <MobileTabBar />
     </div>
   );
-}
-
-function Index() {
-  return <PlaceholderIndex />;
 }
