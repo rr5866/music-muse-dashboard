@@ -1,5 +1,6 @@
 import { Play } from "lucide-react";
 import { motion } from "framer-motion";
+import { useNowPlaying } from "../context/NowPlayingContext";
 
 const recentItems = [
   { title: "Starboy", artist: "The Weeknd", img: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=300&h=300&fit=crop" },
@@ -11,6 +12,8 @@ const recentItems = [
 ];
 
 export function RecentlyPlayed() {
+  const { setSelectedTrack } = useNowPlaying();
+
   return (
     <section>
       <h2 className="text-xl lg:text-2xl font-bold text-foreground mb-4">Recently Played</h2>
@@ -22,6 +25,7 @@ export function RecentlyPlayed() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.05, duration: 0.3 }}
             className="group relative bg-card rounded-lg p-3 card-hover cursor-pointer"
+            onClick={() => setSelectedTrack(item)}
           >
             <div className="relative aspect-square rounded-md overflow-hidden mb-3">
               <img src={item.img} alt={item.title} className="h-full w-full object-cover" />
