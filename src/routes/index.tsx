@@ -7,6 +7,7 @@ import { RecentlyPlayed } from "../components/RecentlyPlayed";
 import { RecommendedSection } from "../components/RecommendedSection";
 import { NowPlayingSidebar } from "../components/NowPlayingSidebar";
 import { NowPlayingProvider } from "../context/NowPlayingContext";
+import { TopNavBar } from "../components/TopNavBar";
 
 export const Route = createFileRoute("/")({
   head: () => ({
