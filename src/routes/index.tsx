@@ -27,6 +27,7 @@ function Index() {
       <div className="flex min-h-screen bg-background">
         <MusicSidebar />
         <main className="flex-1 overflow-y-auto pb-36 lg:pb-28">
+          <TopNavBar />
           <div className="px-4 lg:px-8 py-4 lg:py-6 space-y-8">
             <HeroHeader />
             <RecentlyPlayed />
